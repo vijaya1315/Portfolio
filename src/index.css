@@ -1,8 +1,27 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));  /* for dark/light theme  */
 
 @layer base{
   h1 {
     @apply text-6xl
   }
+}
+
+@layer utilities{
+    .switchButotn{
+      width: 50px;
+      position: relative;
+      background-color: white;
+      z-index: 9;
+      border-radius: 30px;
+      &::after{
+        content: "";
+        position: absolute;
+        background-color: gray;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        right: 0;
+      }
+    }
 }

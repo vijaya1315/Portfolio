@@ -1,26 +1,22 @@
-import { useState } from "react"
 
 export default function Header() {
- 
-    localStorage.setItem("theme" , "light")  
-      let b =localStorage.getItem("theme")
-      
   const toggleTheme = () => {
-    if(b == "dark"){
-        localStorage.setItem("theme" , "light")  
-        document.documentElement.classList.add("light")
-        document.documentElement.classList.remove("dark")
+    const isDark = document.documentElement.classList.contains("dark")
 
-    }else{
-        document.documentElement.classList.remove("light")
-        document.documentElement.classList.add("dark")
-        localStorage.setItem("theme", "dark")
+    if (isDark) {
+      document.documentElement.classList.remove("dark")
+      localStorage.theme = "light"
+    } else {
+      document.documentElement.classList.add("dark")
+      localStorage.theme = "dark"
     }
-  }    
- 
+  }
 
-    return(
-        <button onClick={ toggleTheme}>Toggle</button>
-    )
+  return (
+    <div className="header">
+        <button onClick={toggleTheme} className="switchButotn">Toggle</button>
+        <input type="checkbox" name="" id="" onChange={toggleTheme} />
+    </div>
 
+  )
 }
